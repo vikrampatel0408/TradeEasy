@@ -1,2 +1,2 @@
-# django-todo-app
-A Smple Todo App developed by Django Framework
+# django-stock-market
+A Simple stockmarket webapp by Django Framework
