@@ -1,0 +1,121 @@
+{% extends "base.html" %} {% block content %}
+{% load mathfilters %}
+<link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+                <!-- end app-navbar -->
+                <!-- begin app-main -->
+                <div class="app-main" id="main">
+                    <!-- begin container-fluid -->
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xxl-12 mb-30">
+                                <div class="card card-statistics h-100 mb-0">
+                                    <div class="card-header">
+                                        <h4 class="card-title">My Portfolio</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless mb-0" id="mytable">
+                                                <thead class="bg-light">
+                                                    <tr>
+                                                        <th>Logo</th>
+                                                        <th>Name</th>
+                                                        <th>Current Price</th>
+                                                        <th>Buying price</th>
+                                                        <th>Tokens invested</th>
+                                                        <th>Buying amount</th>
+                                                        <th>Profit / Loss</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="text-muted mb-0">
+                                                    {% for i in aaa %}
+                                                        {% if i.u_id == request.session.u_id %}
+                                                        <tr>
+                                                            
+                                                            <td><img src="{{i.b_img}}" alt="" style="width:20px;height:20px"></td>
+                                                            <td>{{i.b_name}}</td>
+                                                            <td>
+                                                                {% for a in apidata %}
+                                                                {% if i.b_name == a.name %}
+                                                                {{a.current_price}}
+                                                                {% endif %}
+                                                                {% endfor %}
+
+                                                            </td>
+                                                            <td>
+                                                                <center>{{i.b_price}}</center>
+                                                            </td>
+                                                            <td>{{i.b_token}}</td>
+                                                            <td>{{i.b_amt}}</td>
+                                                            <td>
+                                                                {% for a in apidata %}
+                                                                {% if i.b_name == a.name %}
+                                                                
+                                                                {{ a.current_price|sub:i.b_price|div:i.b_token}}
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                            </td>
+                                                            <td>
+                
+                                                                <form action="" method="POST">
+                                                                    {% csrf_token %}
+                                                                <input type="hidden" name="id" value="{{i.id}}">
+                                                                <input type="hidden" name="invtkn" value="{{i.b_token}}">
+                                                                <input type="hidden" name="img" value="{{i.b_img}}">
+                                                                <input type="hidden" name="name" value="{{i.b_name}}">
+                                                                {% for a in apidata %}
+                                                                {% if i.b_name == a.name %}
+                                                                <input type="hidden" name="cur_price" value="{{a.current_price}}">
+                                                                <input type="hidden" name="pandl" value="{{ a.current_price|sub:i.b_price|div:i.b_token}}">
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                               
+                                                                <button class="mr-2 btn btn-danger" name="submit" type="submit"><i class="fa fa-money"  ></i></button>
+                                                            </form>
+                                                            </td>
+                                                        </tr>
+                                                       
+                                                    {% endif %}
+                                                    {% endfor %}
+                
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                        </div>
+                    </div>
+                    <!-- end container-fluid -->
+                </div>
+                <!-- end app-main -->
+            </div>
+            <!-- end app-container -->
+            <!-- begin footer -->
+            
+            <!-- end footer -->
+        </div>
+        <!-- end app-wrap -->
+    </div>
+    <!-- end app -->
+
+    <!-- plugins -->
+    
+
+    <!-- datatables.net -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#mytable').DataTable();
+        });
+    </script>
+
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,225 @@
+{% extends "base.html" %} {% block content %}
+<!-- end app-navbar -->
+<!-- begin app-main -->
+<div class="app-main" id="main">
+    <!-- begin container-fluid -->
+    <div class="container-fluid">
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-md-12 m-b-30">
+                <!-- begin page title -->
+                <div class="d-block d-sm-flex flex-nowrap align-items-center">
+                    <div class="page-title mb-2 mb-sm-0">
+                        <h1>Home</h1>
+                    </div>
+
+                </div>
+                <!-- end page title -->
+            </div>
+        </div>
+        <!-- end row -->
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-statistics">
+                    <div class="card-body">
+                        <div class="owl-wrapper">
+                            <div class="owl-carousel owl-theme" data-nav-dots="false" data-items="10" data-xl-items="10"
+                                data-lg-items="10" data-md-items="6" data-sm-items="4" data-xs-items="4"
+                                data-xx-items="2">
+                                {% for i in apidata %}
+                                <div class="item">
+                                    <div class="p-2 text-center">
+                                        <!-- <center>
+                                        <img src="{{i.image}}" alt="" style="width:30px;height:30px">
+                                        </center> -->
+                                        <small class="text-uppercase d-block mt-1">{{i.name}}</small>
+                                        <strong>{{i.change}}</strong>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-xxl-2">
+                <div class="card card-statistics">
+                    <div class="card-header">
+                        <h4 class="card-title">Total Sale</h4>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="row">
+                            <div class="col">
+                                <small class="text-uppercase d-block">Value</small>
+                                <strong class="text-dark">100.82K</strong>
+                            </div>
+                            <div class="col text-right">
+                                <small class="text-uppercase d-block">Target</small>
+                                <strong class="text-dark">150.32K</strong>
+                            </div>
+                        </div>
+                        <div class="mb-2 text-center">
+                            <div class="progress my-3" style="height: 2px;">
+                                <div class="progress-bar bg-pink" role="progressbar" style="width: 80%;"
+                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h5><b class="text-pink">72.10%</b> <small> of Target </small></h5>
+                        </div>
+                    </div>
+                    <div class="apexchart-wrapper o-hidden">
+                        <div id="stockmarketdemo1" class="chart-fit"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xxl-2">
+                <div class="card card-statistics">
+                    <div class="card-header">
+                        <h4 class="card-title">Total Buy</h4>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="row">
+                            <div class="col">
+                                <small class="text-uppercase d-block">Value</small>
+                                <strong class="text-dark">325.45K</strong>
+                            </div>
+                            <div class="col text-right">
+                                <small class="text-uppercase d-block">Target</small>
+                                <strong class="text-dark">456.78K</strong>
+                            </div>
+                        </div>
+                        <div class="mb-2 text-center">
+                            <div class="progress my-3" style="height: 2px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 98%;"
+                                    aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h5><b class="text-primary">98.10%</b> <small> of Target </small></h5>
+                        </div>
+                    </div>
+                    <div class="apexchart-wrapper o-hidden">
+                        <div id="stockmarketdemo2" class="chart-fit"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xxl-2">
+                <div class="card card-statistics">
+                    <div class="card-header">
+                        <h4 class="card-title">Total Loss</h4>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="row">
+                            <div class="col">
+                                <small class="text-uppercase d-block">Value</small>
+                                <strong class="text-dark">123.45K</strong>
+                            </div>
+                            <div class="col text-right">
+                                <small class="text-uppercase d-block">Target</small>
+                                <strong class="text-dark">145.45K</strong>
+                            </div>
+                        </div>
+                        <div class="mb-2 text-center">
+                            <div class="progress my-3" style="height: 2px;">
+                                <div class="progress-bar bg-orange" role="progressbar" style="width: 78%;"
+                                    aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h5><b class="text-orange">78.56%</b> <small> of Target </small></h5>
+                        </div>
+                    </div>
+                    <div class="apexchart-wrapper o-hidden">
+                        <div id="stockmarketdemo3" class="chart-fit"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xxl-2">
+                <div class="card card-statistics">
+                    <div class="card-header">
+                        <h4 class="card-title">Total Profit</h4>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="row">
+                            <div class="col">
+                                <small class="text-uppercase d-block">Value</small>
+                                <strong class="text-dark">789.45K</strong>
+                            </div>
+                            <div class="col text-right">
+                                <small class="text-uppercase d-block">Target</small>
+                                <strong class="text-dark">545.45K</strong>
+                            </div>
+                        </div>
+                        <div class="mb-2 text-center">
+                            <div class="progress my-3" style="height: 2px;">
+                                <div class="progress-bar bg-cyan" role="progressbar" style="width: 85%;"
+                                    aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <h5><b class="text-primary2">85.45%</b> <small> of Target </small></h5>
+                        </div>
+                    </div>
+                    <div class="apexchart-wrapper o-hidden">
+                        <div id="stockmarketdemo4" class="chart-fit"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4">
+                <div class="card card-statistics bg-info mb-0">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <strong class="text-white text-uppercase font-18">Sensex</strong>
+                            </div>
+                            <div class="col">
+                                <strong class="text-white text-uppercase font-18">$122,454.78</strong>
+                            </div>
+                            <div class="col">
+                                <strong class="text-white text-uppercase font-18"><i
+                                        class="fa fa-arrow-up text-white pr-1"></i> %2.9</strong>
+                            </div>
+                            <div class="col">
+                                <div class="apexchart-wrapper">
+                                    <div id="stockmarketdemo6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-statistics bg-primary">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <strong class="text-white text-uppercase font-18">Nifty</strong>
+                            </div>
+                            <div class="col">
+                                <strong class="text-white text-uppercase font-18">$122,454.78</strong>
+                            </div>
+                            <div class="col">
+                                <strong class="text-white text-uppercase font-18"><i
+                                        class="fa fa-arrow-up text-white pr-1"></i> %2.9</strong>
+                            </div>
+                            <div class="col">
+                                <div class="apexchart-wrapper">
+                                    <div id="stockmarketdemo7"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- end container-fluid -->
+    </div>
+    <!-- end app-main -->
+</div>
+<!-- end app-container -->
+<!-- begin footer -->
+
+<!-- end footer -->
+</div>
+</body>
+
+</html>
+{% endblock %}
