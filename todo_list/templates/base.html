@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TradeEasy</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Admin template that can be used to build dashboards for CRM, CMS, etc." />
+    <meta name="author" content="Potenza Global Solutions" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- app favicon -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <!-- plugin stylesheets -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors.css' %}" />
+    <!-- app style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+    <header class="app-header top-bar">
+        <!-- begin navbar -->
+        <nav class="navbar navbar-expand-md">
+
+            <!-- begin navbar-header -->
+            <div class="navbar-header d-flex align-items-center">
+                <a href="javascript:void:(0)" class="mobile-toggle"><i class="ti ti-align-right"></i></a>
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    TradeEasy
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="ti ti-align-left"></i>
+            </button>
+            <!-- end navbar-header -->
+            <!-- begin navigation -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navigation d-flex">
+                    <ul class="navbar-nav nav-left">
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" class="nav-link sidebar-toggle">
+                                <i class="ti ti-align-right"></i>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item full-screen d-none d-lg-block" id="btnFullscreen">
+                            <a href="javascript:void(0)" class="nav-link expand">
+                                <i class="icon-size-fullscreen"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav nav-right ml-auto">
+                        
+                        
+                        <div class="name-edit" style='display:flex;justify-content:center;align-items:center;font-weight:700;margin-right:1rem;color:#000'>{{request.session.fname}}</div>
+                        <li class="nav-item dropdown user-profile">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle " id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="{% static 'img/avtar/02.jpg' %}" alt="avtar-img">
+                                <span class="bg-success user-status"></span>
+                            </a>
+                            <div class="dropdown-menu animated fadeIn" aria-labelledby="navbarDropdown">
+                                <div class="bg-gradient px-4 py-3">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="mr-1">
+                                            <h4 class="text-white mb-0">
+                                                {% if user.is_authenticated %} {{request.session.fname}}
+                                                {% else  %}
+                                                    {% url 'logout' %}
+                                                {% endif %}
+                                            </h4>
+                                            <small class="text-white">{{request.session.email}}</small>
+                                        </div>
+                                        <a href="/logout" class="text-white font-20 tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout"> <i class="zmdi zmdi-power"></i></a>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                   
+                                 
+                                    <a class="dropdown-item d-flex nav-link" href="{% url 'contact' %}">
+                                        <i class="fa fa-compass pr-2 text-warning"></i> Need help?</a>
+                                    
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end navigation -->
+        </nav>
+        <!-- end navbar -->
+    </header>
+    <script src="{% static 'js/vendors.js' %}"></script>
+
+    <!-- custom app -->
+    <script src="{% static 'js/app.js' %}"></script>
+    <div class="app-container">
+        <!-- begin app-nabar -->
+        <aside class="app-navbar">
+            <!-- begin sidebar-nav -->
+            <div class="sidebar-nav scrollbar scroll_light">
+                <ul class="metismenu " id="sidebarNav">
+                    <li class="nav-static-title">Personal</li>
+                    <li class="active">
+
+                        <li> <a href="{% url 'home' %}">Home</a> </li>
+                       
+                        <li> <a href ="{%url 'portfolio'%}">Portfolio</a></li>
+                        
+                        <li > <a href="{% url 'stockmarket' %}">Stock Market</a> </li>
+
+                        <li> <a href="{% url 'marketnews' %}">Market News</a> </li>
+
+                        <li> <a href="{% url 'cryptocurrency' %}">Crypto Currency</a> </li>
+
+                    </li>
+
+                    {% comment %} <li><a href="{% url 'mailinbox' %}" aria-expanded="false">Mail</a> </li> {% endcomment %}
+
+
+
+
+
+
+                    {% comment %} <li>
+                        <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><span class="nav-title">Updates</span></a>
+                        <ul aria-expanded="false">
+                            <li> <a href="account-settings.html">Account Settings</a> </li>
+
+
+                            <li> <a href="page-faq.html">FAQ</a> </li>
+                            <li> <a href="page-pricing.html">Currency Pricing</a> </li>
+                            <li> <a href="page-coming-soon.html">Upcoming Currency</a> </li>
+
+                            <li> <a href="page-pricing.html">Stock Pricing</a> </li>
+                            <li> <a href="page-coming-soon.html">Upcoming Stocks</a> </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><span class="nav-title">Auth</span></a>
+                        <ul aria-expanded="false">
+                            <li> <a href="/authlogin">Login</a> </li>
+                            <li> <a href="/authregister">Register</a> </li>
+
+                        </ul>
+                    </li> {% endcomment %}
+
+                </ul>
+            </div>
+            <!-- end sidebar-nav -->
+        </aside>
+        {% block content %}{% endblock %}

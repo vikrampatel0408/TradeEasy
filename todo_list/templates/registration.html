@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Registration</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='registration.css'>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <!-- <script src='main.js'></script> -->
+</head>
+<body>
+    <div class="signup__container">
+        <div class="container__child signup__thumbnail">
+          <div class="thumbnail__logo">
+            <img src="logo1.jpg" class="logo__shape" width="25px">
+                 <h1 class="logo__text">TradeEasy</h1>
+          </div><br>
+          <br><br><br><br><br><br><br>
+          <div class="thumbnail__content text-center">
+            <h1 class="heading--primary">Welcome to TradeEasy.</h1>
+            <h2 class="heading--secondary">Are you ready to join the elite?</h2>
+          </div>
+          <div class="thumbnail__links text-center">
+            
+              <div class="google-btn">
+                <div class="google-icon-wrapper">
+                  <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                </div>
+                <p class="btn-text"><b>Sign in with google</b></p>
+              </div></a>
+            
+          </div>
+          <div class="signup__overlay"></div>
+        </div>
+        <div class="container__child signup__form">
+          <form action="#">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input class="form-control" type="text" name="username" id="username" placeholder="james.bond" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input class="form-control" type="text" name="email" id="email" placeholder="james.bond@spectre.com" required />
+            </div>
+            <div class="form-group">
+                <label for="username">Date of Birth</label>
+                <input class="form-control" type="date" name="dob" id="dob" placeholder="DD/MM/YYYY" required />
+            </div>
+            <div class="form-group">
+                <label for="username">Contact No.</label>
+                <input class="form-control" type="number" name="contact" id="contact" placeholder="3546763125" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input class="form-control" type="password" name="password" id="password" placeholder="********" required />
+            </div>
+            <div class="form-group">
+              <label for="passwordRepeat">Repeat Password</label>
+              <input class="form-control" type="password" name="passwordRepeat" id="passwordRepeat" placeholder="********" required />
+            </div>
+            <div class="m-t-lg">
+              <ul class="list-inline">
+                <li>
+                  <input class="btn btn--form" type="submit" value="Register" />
+                </li>
+                <li>
+                  <a class="signup__link" href="#">I am already a member</a>
+                </li>
+              </ul>
+            </div>
+          </form>  
+        </div>
+      </div>
+</body>
+</html>

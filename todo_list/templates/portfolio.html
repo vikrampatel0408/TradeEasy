@@ -1,0 +1,99 @@
+{% extends "base.html" %} {% block content %}
+{% load mathfilters %}
+
+<link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+                <div class="app-main" id="main">
+                    <!-- begin container-fluid -->
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xxl-12 mb-30">
+                                <div class="card card-statistics h-100 mb-0">
+                                    <div class="card-header">
+                                        <h4 class="card-title">My Portfolio </h4>
+                                        
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless mb-0" id="mytable">
+                                                <thead class="bg-light">
+                                                
+                                                    <tr>
+                                                        
+                                                        <th>Name</th>
+                                                        <th>Current Price</th>
+                                                        <th>buying_price</th>
+                                                        <th>Quantity</th>
+                                                        <th>Buying amount</th>
+                                                        <th>Profit / Loss</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                            
+                                                {% for d, i in liste %}
+                                                <tr>
+                                                <td>{{d.name}}</td>
+                                                <td>{{i}}</td>
+                                                <td>{{d.buying_price}}</td>
+                                                <td>{{d.Quantity}}</td>
+                                                <td>{{d.buying_price|mul:d.Quantity}}</td>
+                                                <td>{{i|sub:d.buying_price|mul:d.Quantity}}</td>
+                                                <td>
+                
+                                                    <form action="delete" method="post">
+                                                        {% csrf_token %}
+                                                    
+                                                    <input type="hidden" name="name" value="{{d.name}}">
+                                                    
+                                                    <input type="hidden" name="cur_price" value="{{i}}">
+                                                    
+                                    
+                                                    <button class="mr-2 btn btn-danger" name="submit" type="submit">Delete</button>
+                                                </form>
+                                                </td>
+                                                </tr>
+                                                {% endfor %}
+                                            
+                                            </table>
+                                            <button type="button" class="btn btn-primary"><a href="{%url 'add' %}">Add Stock</a></button>
+                                        </div>
+
+                                </div>
+                            </div>
+                
+                        </div>
+                    </div>
+                    <!-- end container-fluid -->
+
+
+
+                </div>
+                <!-- end app-main -->
+            </div>
+            <!-- end app-container -->
+            <!-- begin footer -->
+            
+            <!-- end footer -->
+        </div>
+        <!-- end app-wrap -->
+    </div>
+    <!-- end app -->
+
+    <!-- plugins -->
+    
+
+    <!-- datatables.net -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#mytable').DataTable();
+        });
+    </script>
+
+</body>
+
+</html>
+{% endblock %} 

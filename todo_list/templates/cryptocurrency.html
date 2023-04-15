@@ -1,0 +1,113 @@
+{% extends "base.html" %} {% block content %}
+<link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<!-- end app-navbar -->
+<!-- begin app-main -->
+<div class="app-main" id="main">
+    <!-- begin container-fluid -->
+    <div class="container-fluid">
+        <!-- begin row -->
+        <div class="row">
+            <div class="col-md-12 m-b-30">
+                <!-- begin page title -->
+                <div class="d-block d-sm-flex flex-nowrap align-items-center">
+                    <div class="page-title mb-2 mb-sm-0">
+                        <h1>Crypto Currency</h1>
+                    </div>
+
+                </div>
+                <!-- end page title -->
+            </div>
+        </div>
+        <!-- end row -->
+        <!-- start car dealer-->
+
+        <div class="row">
+            <div class="col-xxl-12 mb-30">
+                <div class="card card-statistics h-100 mb-0">
+                    <div class="card-header">
+                        <h4 class="card-title">Top Stocks</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-borderless mb-0" id="mytable">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th>Symbol</th>
+                                        <th>Name</th>
+                                        <th>Open</th>
+                                        <th>High</th>
+                                        <th>Low</th>
+                                        <th>Close</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-muted mb-0">
+                                    {% for i in apidata %}
+                                    
+                                        <tr>
+                                            <!-- <td><img src="{{i.image}}" alt="" style="width:20px;height:20px"></td> -->
+                                            <td>{{i.symbol}}</td>
+                                            <td>{{i.name}}</td>
+                                            <td>{{i.open}}</td>
+                                            <td>{{i.high}}</td>
+                                            <td>{{i.low}}</td>
+                                            <td>{{i.close}}</td>
+                                          
+                                        </tr>
+                                       
+                                    
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- end car dealer-->
+    </div>
+    <!-- end container-fluid -->
+</div>
+<!-- end app-main -->
+</div>
+<!-- end app-container -->
+<!-- begin footer -->
+
+<!-- end footer -->
+</div>
+<!-- end app-wrap -->
+</div>
+<!-- end app -->
+
+<!-- plugins -->
+
+
+<!-- datatables.net -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+<script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#mytable').DataTable();
+    });
+</script>
+
+</body>
+
+</html>
+{% endblock %}
+{% for i in apidata %}
+                            <div class="item">
+                                <div class="p-2 text-center">
+                                    <!-- <center>
+                                        <img src="{{i.image}}" alt="" style="width:30px;height:30px">
+                                        </center> -->
+                                    <small class="text-uppercase d-block mt-1">{{i.name}}</small>
+                                    <strong>{{i.change}}</strong>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        

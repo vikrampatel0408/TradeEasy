@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TradeEasy</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Admin template that can be used to build dashboards for CRM, CMS, etc." />
+    <meta name="author" content="Potenza Global Solutions" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- app favicon -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <!-- plugin stylesheets -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendors.css' %}" />
+    <!-- app style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+
+
+<form method="POST" action="{%url 'portfolio'%}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="stock_name">Stock Name:</label>
+            <select class="form-control" id="stock_name" name="stock_name" required>
+                {% for stock in apidata %}
+                    <option value="{{ stock.symbol }}">{{ stock.symbol }}</option>
+            {% endfor %}
+            </select>
+            </div>
+    <div class="form-group">
+        <label for="buying_price">Buying Price:</label>
+        <input type="number" class="form-control" id="buying_price" name="buying_price" step="0.01">
+    </div>
+    
+    <div class="form-group">
+        <label for="Quantity">No.of Stocks</label>
+        <input type="number" class="form-control" id="Quantity" name="Quantity" required>
+    </div>
+    {% comment %} <div class="form-group">
+        <label for="tokens_invested">Tokens Invested:</label>
+        <input type="number" class="form-control" id="tokens_invested" name="tokens_invested" value="{{buying_price}}*{{Quantity}}" required>
+    </div> {% endcomment %}
+    <button type="submit" class="btn btn-primary"><a href={%url 'portfolio' %}>Add</a></button>
+</form>
+<br>
+<br>
